@@ -1,0 +1,8 @@
+Step 1 : npm init -y 
+Step 2 : npm i express nodemon 
+Step 3 : package.json > script > "start" : "nodemon index.js" 
+Step 4 : package.json > "type" : "module"
+Step 5 : index.js , import express , create instance of it, const app = express();
+Step 6 : create api's, app.get("/hello" , hello)
+Step 6.1 : Connect mongodb ....(pending..)
+Step 7 : app liston on port 
