@@ -5,3 +5,6 @@ export const Login = (req, res) => {
 export const Register = (req, res) => {
     res.send("Hi from register")
 }
+export const getCurrentUser = (req, res) => {
+    res.send("HIII")
+}

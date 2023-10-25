@@ -8,10 +8,6 @@ app.use((req, res, next)=>{
     next();
 })
 
-app.get("/", function (req, res) {
-    res.send("Hello Awdiz..")
-})
-
 app.use("/api/v1", router)
 
 app.listen(8000, () => console.log("App is running on port 8000."))
