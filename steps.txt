@@ -12,6 +12,9 @@ Step 1 :  npm i mongoose
 Step 2 : import mongoose from 'mongoose';
 Step 3 : mongoose.connect('yoururl').then(() => console.log("Database connected."))
 
+Step 4 : Create data Modals 
+Step 5 : create file and use schema
+
 .ENV connection
 Step 1 : npm i dotenv
 Step 2 : import dotenv from dotenv 
@@ -22,3 +25,9 @@ Logger reports :
 Step 1 : npm i morgan 
 Step 2 : import morgan from morgan
 Step 3 : app.use(morgan('dev'))
+
+Cors connection
+ To connect backend server with frontend use cors  
+ npm i cors
+ Step 1 : import cors from cors 
+ Step 2 : app.use(cors());

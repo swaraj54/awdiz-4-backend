@@ -5,7 +5,7 @@ const router = Router();
 
 //api
 
-router.get("/login", Login)
+router.post("/login", Login)
 router.post("/register", Register)
 
 export default router;
