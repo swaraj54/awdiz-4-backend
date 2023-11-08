@@ -17,7 +17,9 @@ app.use((req, res, next) => {
     // res.send("hi from middleware use")
     next();
 })
-
+app.get('/', (req, res) => {
+    res.send("Welcome to Awdiz Backend server.")
+})
 app.use("/api/v1", router)
 
 mongoose.connect(process.env.MONGOURL).then(() => console.log("Database connected."))

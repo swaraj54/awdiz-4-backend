@@ -31,18 +31,17 @@ export const Login = async (req, res) => {
 export const Register = async (req, res) => {
     try {
         // console.log(req.body, "req.body")
-        const { name, email, password, number } = req.body;
+        const { name, email, password } = req.body.userData;
         // console.log(number, typeof number)
         // console.log(name, email, password, "add data")
-        if (!name || !email || !password || !number) return res.status(401).json({ success: false, message: "All fields are mandtory." })
+        if (!name || !email || !password ) return res.status(401).json({ success: false, message: "All fields are mandtory." })
 
         const hashedPassword = await bcrypt.hash(password, 10);
         // console.log(hashedPassword,"hashedPassword")
         const user = new UserModal({
             name: name,
             email,
-            password: hashedPassword,
-            number
+            password: hashedPassword
         })
 
         await user.save();
