@@ -4,7 +4,7 @@ import Jwt from "jsonwebtoken";
 
 export const Login = async (req, res) => {
     try {
-        const { email, password } = req.body;
+        const { email, password } = req.body.userData;
         if (!email || !password) return res.status(401).json({ success: false, message: "All fields are manmdatory.." })
 
         const user = await UserModal.findOne({ email: email });
@@ -15,7 +15,7 @@ export const Login = async (req, res) => {
         const isPasscorrect = await bcrypt.compare(password, user.password);
         // console.log(isPasscorrect, "check here")
         if (!isPasscorrect) {
-            return res.status(401).json({ success: false, message: "Passwprd is wrpmog." })
+            return res.status(401).json({ success: false, message: "Passwprd is wrong." })
         }
         // generate token
 
@@ -34,7 +34,7 @@ export const Register = async (req, res) => {
         const { name, email, password } = req.body.userData;
         // console.log(number, typeof number)
         // console.log(name, email, password, "add data")
-        if (!name || !email || !password ) return res.status(401).json({ success: false, message: "All fields are mandtory." })
+        if (!name || !email || !password) return res.status(401).json({ success: false, message: "All fields are mandtory." })
 
         const hashedPassword = await bcrypt.hash(password, 10);
         // console.log(hashedPassword,"hashedPassword")
@@ -57,7 +57,7 @@ export const getCurrentUser = async (req, res) => {
         const { token } = req.body;
         if (!token) return res.status(401).json({ success: false, message: "Token is requored." })
 
-        const {id} = await Jwt.verify(token, process.env.JWT_SECRET)
+        const { id } = await Jwt.verify(token, process.env.JWT_SECRET)
         // console.log(id, 'id')
 
         const user = await UserModal.findById(id);
