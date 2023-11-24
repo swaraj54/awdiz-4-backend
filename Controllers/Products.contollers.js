@@ -70,8 +70,23 @@ export const filterProducts = async (req, res) => {
 
         const products = await ProductModal.find(updatedQuery).skip(skip * 10).limit(page).sort(updatedSorting)
 
-        return res.status(200).json({ message: "Products found", products })
+        return res.status(200).json({ success: true, message: "Products found", products })
 
+
+    } catch (error) {
+        return res.status(500).json({ success: false, message: error })
+    }
+}
+
+
+
+export const yourProducts = async (req, res) => {
+    try {
+        const { id } = req.body;
+        if (!id) return res.status(404).json({ message: "Id not found." })
+
+        const allproducts = await ProductModal.find({ userId: id })
+        return res.status(200).json({ success: true, products: allproducts })
 
     } catch (error) {
         return res.status(500).json({ success: false, message: error })
