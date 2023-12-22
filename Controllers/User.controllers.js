@@ -43,7 +43,7 @@ export const deleteCart = async (req, res) => {
 
         const user = await UserModal.findById(userId)
         if (!user) return res.status(404).json({ success: false, message: "User not found.." })
-        
+
         const index = user.cart.indexOf(productId);
         user.cart.splice(index, 1)
         await user.save();
@@ -63,3 +63,40 @@ export const deleteCart = async (req, res) => {
 
 
 // find all id's of products from user modal, then use those id's to find products data from productModal
+
+
+
+export const putUpdateUser = (req, res) => {
+    try {
+        const userId = req.params.id;
+        const { name } = req.body;
+        // do anything
+
+        return res.status(200).json({ success: true, data: { userId, name } })
+    } catch (error) {
+        return res.status(500).json({ success: false, message: error })
+    }
+}
+
+export const patchUpdateUser = (req, res) => {
+    try {
+        const userId = req.params.id;
+        const { name } = req.body;
+        // do anything... 
+
+        return res.status(200).json({ success: true, data: { userId, name } })
+    } catch (error) {
+        return res.status(500).json({ success: false, message: error })
+    }
+}
+
+export const getTesting = (req, res) => {
+    try {
+        const userId = req.params.id;
+        // do anything... 
+
+        return res.status(200).json({ success: true, data: userId })
+    } catch (error) {
+        return res.status(500).json({ success: false, message: error })
+    }
+}

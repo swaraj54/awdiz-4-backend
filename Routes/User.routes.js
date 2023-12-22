@@ -1,8 +1,14 @@
 import { Router } from "express";
-import { Cart, addCart, deleteCart } from "../Controllers/User.controllers.js";
+import { Cart, addCart, deleteCart, getTesting, patchUpdateUser, putUpdateUser } from "../Controllers/User.controllers.js";
 import axios from "axios";
 
 const router = Router();
+
+
+
+router.put('/put-update-user/:id', putUpdateUser) // when we want to replace user data 
+router.patch('/patch-update-user/:id', patchUpdateUser) // when we want to update/modify user data
+router.get('/get-testing/:id', getTesting)
 
 router.post('/add-cart', addCart)
 router.post('/cart', Cart)
